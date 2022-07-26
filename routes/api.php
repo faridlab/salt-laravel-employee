@@ -34,4 +34,28 @@ Route::namespace('SaltEmployee\Controllers')
     Route::delete("religions/{id}", 'ApiEmployeeResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
 
 
+    // API: EMPLOYEES
+    Route::get("employees", 'ApiEmployeeResourcesController@index'); // get entire collection
+    Route::post("employees", 'ApiEmployeeResourcesController@store'); // create new collection
+
+    Route::get("employees/trash", 'ApiEmployeeResourcesController@trash'); // trash of collection
+
+    Route::post("employees/import", 'ApiEmployeeResourcesController@import'); // import collection from external
+    Route::post("employees/export", 'ApiEmployeeResourcesController@export'); // export entire collection
+    Route::get("employees/report", 'ApiEmployeeResourcesController@report'); // report collection
+
+    Route::get("employees/{id}/trashed", 'ApiEmployeeResourcesController@trashed')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID from trash
+
+    // RESTORE data by ID (id), selected IDs (selected), and All data (all)
+    Route::post("employees/{id}/restore", 'ApiEmployeeResourcesController@restore')->where('id', '[a-zA-Z0-9-]+'); // restore collection by ID
+
+    // DELETE data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("employees/{id}/delete", 'ApiEmployeeResourcesController@delete')->where('id', '[a-zA-Z0-9-]+'); // hard delete collection by ID
+
+    Route::get("employees/{id}", 'ApiEmployeeResourcesController@show')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID
+    Route::put("employees/{id}", 'ApiEmployeeResourcesController@update')->where('id', '[a-zA-Z0-9-]+'); // update collection by ID
+    Route::patch("employees/{id}", 'ApiEmployeeResourcesController@patch')->where('id', '[a-zA-Z0-9-]+'); // patch collection by ID
+    // DESTROY data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("employees/{id}", 'ApiEmployeeResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
+
 });
