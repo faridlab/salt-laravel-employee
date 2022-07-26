@@ -18,9 +18,9 @@ class SaltEmployeeServiceProvider extends ServiceProvider
          *
          * Uncomment this function call to make the config file publishable using the 'config' tag.
          */
-        // $this->publishes([
-        //     __DIR__.'/../../config/salt-laravel-employee.php' => config_path('salt-laravel-employee.php'),
-        // ], 'config');
+        $this->publishes([
+            __DIR__.'/../../config/salt-laravel-employee.php' => config_path('employee.php'),
+        ], 'config');
 
         /**
          * Routes
@@ -29,6 +29,7 @@ class SaltEmployeeServiceProvider extends ServiceProvider
          * A web.php file has already been generated.
          */
         // $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../../routes/api.php');
 
         /**
          * Translations
@@ -82,9 +83,9 @@ class SaltEmployeeServiceProvider extends ServiceProvider
          * Uncomment the second function call to make the migrations publishable using the 'migrations' tags.
          */
         // $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        // $this->publishes([
-        //     __DIR__.'/../../database/migrations/' => database_path('migrations')
-        // ], 'migrations');
+        $this->publishes([
+            __DIR__.'/../../database/migrations/' => database_path('migrations')
+        ], 'employee-migrations');
     }
 
     /**
