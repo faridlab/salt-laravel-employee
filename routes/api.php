@@ -183,4 +183,29 @@ Route::namespace('SaltEmployee\Controllers')
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
     Route::delete("employee_taxes/{id}", 'ApiEmployeeResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
 
+
+    // API: EMPLOYEE BPJS
+    Route::get("employee_bpjs", 'ApiEmployeeResourcesController@index'); // get entire collection
+    Route::post("employee_bpjs", 'ApiEmployeeResourcesController@store'); // create new collection
+
+    Route::get("employee_bpjs/trash", 'ApiEmployeeResourcesController@trash'); // trash of collection
+
+    Route::post("employee_bpjs/import", 'ApiEmployeeResourcesController@import'); // import collection from external
+    Route::post("employee_bpjs/export", 'ApiEmployeeResourcesController@export'); // export entire collection
+    Route::get("employee_bpjs/report", 'ApiEmployeeResourcesController@report'); // report collection
+
+    Route::get("employee_bpjs/{id}/trashed", 'ApiEmployeeResourcesController@trashed')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID from trash
+
+    // RESTORE data by ID (id), selected IDs (selected), and All data (all)
+    Route::post("employee_bpjs/{id}/restore", 'ApiEmployeeResourcesController@restore')->where('id', '[a-zA-Z0-9-]+'); // restore collection by ID
+
+    // DELETE data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("employee_bpjs/{id}/delete", 'ApiEmployeeResourcesController@delete')->where('id', '[a-zA-Z0-9-]+'); // hard delete collection by ID
+
+    Route::get("employee_bpjs/{id}", 'ApiEmployeeResourcesController@show')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID
+    Route::put("employee_bpjs/{id}", 'ApiEmployeeResourcesController@update')->where('id', '[a-zA-Z0-9-]+'); // update collection by ID
+    Route::patch("employee_bpjs/{id}", 'ApiEmployeeResourcesController@patch')->where('id', '[a-zA-Z0-9-]+'); // patch collection by ID
+    // DESTROY data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("employee_bpjs/{id}", 'ApiEmployeeResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
+
 });
