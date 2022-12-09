@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreignUuid('level_id')->references('id')->on('organization_structures');
             $table->foreignUuid('position_id')->references('id')->on('organization_structures');
 
-            $table->foreignUuid('direct_manager_id')->references('id')->on('employees')->nullable();
+            $table->foreignUuid('direct_manager_id')->nullable()->references('id')->on('employees');
             $table->enum('status', ['active', 'inactive']);
 
             $table->timestamps();
