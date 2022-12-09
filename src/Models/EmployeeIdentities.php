@@ -39,7 +39,7 @@ class EmployeeIdentities extends Resources {
         'employee_id' => 'required|string',
         'identity_type' => 'required|string',
         'identity_number' => 'required|string',
-        'identity_expiry_date' => 'required|date',
+        'identity_expiry_date' => 'nullable|date',
         'is_permanent' => 'nullable|boolean',
     );
 
