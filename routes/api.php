@@ -13,6 +13,7 @@ use SaltEmployee\Controllers\EmployeeEducationsController;
 use SaltEmployee\Controllers\EmployeeFamiliesController;
 use SaltEmployee\Controllers\EmployeeIdentitiesController;
 use SaltEmployee\Controllers\EmployeesController;
+use SaltEmployee\Controllers\EmployeeTaxesController;
 use SaltEmployee\Controllers\ReligionsController;
 
 $version = config('app.API_VERSION', 'v1');
@@ -172,28 +173,28 @@ Route::middleware(['api'])
 
 
     // API: EMPLOYEE TAXES
-    Route::get("employee_taxes", [ApiEmployeeResourcesController::class, 'index'])->middleware(['auth:api']); // get entire collection
-    Route::post("employee_taxes", [ApiEmployeeResourcesController::class, 'store'])->middleware(['auth:api']); // create new collection
+    Route::get("employee_taxes", [EmployeeTaxesController::class, 'index'])->middleware(['auth:api']); // get entire collection
+    Route::post("employee_taxes", [EmployeeTaxesController::class, 'store'])->middleware(['auth:api']); // create new collection
 
-    Route::get("employee_taxes/trash", [ApiEmployeeResourcesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
+    Route::get("employee_taxes/trash", [EmployeeTaxesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
 
-    Route::post("employee_taxes/import", [ApiEmployeeResourcesController::class, 'import'])->middleware(['auth:api']); // import collection from external
-    Route::post("employee_taxes/export", [ApiEmployeeResourcesController::class, 'export'])->middleware(['auth:api']); // export entire collection
-    Route::get("employee_taxes/report", [ApiEmployeeResourcesController::class, 'report'])->middleware(['auth:api']); // report collection
+    Route::post("employee_taxes/import", [EmployeeTaxesController::class, 'import'])->middleware(['auth:api']); // import collection from external
+    Route::post("employee_taxes/export", [EmployeeTaxesController::class, 'export'])->middleware(['auth:api']); // export entire collection
+    Route::get("employee_taxes/report", [EmployeeTaxesController::class, 'report'])->middleware(['auth:api']); // report collection
 
-    Route::get("employee_taxes/{id}/trashed", [ApiEmployeeResourcesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
+    Route::get("employee_taxes/{id}/trashed", [EmployeeTaxesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
 
     // RESTORE data by ID (id), selected IDs (selected), and All data (all)
-    Route::post("employee_taxes/{id}/restore", [ApiEmployeeResourcesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
+    Route::post("employee_taxes/{id}/restore", [EmployeeTaxesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
 
     // DELETE data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("employee_taxes/{id}/delete", [ApiEmployeeResourcesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
+    Route::delete("employee_taxes/{id}/delete", [EmployeeTaxesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
 
-    Route::get("employee_taxes/{id}", [ApiEmployeeResourcesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
-    Route::put("employee_taxes/{id}", [ApiEmployeeResourcesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
-    Route::patch("employee_taxes/{id}", [ApiEmployeeResourcesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
+    Route::get("employee_taxes/{id}", [EmployeeTaxesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
+    Route::put("employee_taxes/{id}", [EmployeeTaxesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
+    Route::patch("employee_taxes/{id}", [EmployeeTaxesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("employee_taxes/{id}", [ApiEmployeeResourcesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
+    Route::delete("employee_taxes/{id}", [EmployeeTaxesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
 
     // API: EMPLOYEE BPJS
